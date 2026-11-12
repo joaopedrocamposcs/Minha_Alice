@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Minha Princesa ❤️</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome para Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Canvas Confetti para efeito de comemoração -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+</head>
+<body class="font-sans antialiased relative selection:bg-rose selection:text-white">
+
+    <!-- Canvas de Partículas (Corações Flutuantes) -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- Conteúdo Principal -->
+    <div class="relative z-10 max-w-5xl mx-auto px-4 py-8 sm:px-6 lg:px-8 flex flex-col gap-16 md:gap-24">
+
+        <!-- ================= 1. HERO / CABEÇALHO ================= -->
+        <header class="text-center pt-8 md:pt-12 flex flex-col items-center">
+            
+            <div class="inline-flex items-center justify-center p-3 bg-blush border border-rose/30 rounded-full mb-6 shadow-sm">
+                <i class="fa-solid font-bold fa-heart text-wine-light text-xl heart-beat"></i>
+            </div>
+
+            <!-- DICA DE PERSONALIZAÇÃO: Mude os nomes aqui -->
+            <h1 class="font-serif text-4xl sm:text-6xl font-bold text-wine tracking-tight mb-3">
+                Para a Minha Princesa
+            </h1>
+            <p class="font-cursive text-3xl sm:text-4xl text-rose-dark mb-8">
+                João e Alice
+            </p>
+
+            <!-- CONTADOR DE TEMPO -->
+            <div class="w-full max-w-2xl bg-white/80 backdrop-blur border border-rose/20 rounded-3xl p-6 sm:p-8 shadow-xl">
+                <h2 class="text-sm uppercase tracking-widest text-wine-light font-semibold mb-4">
+                    Contando cada segundo ao seu lado há
+                </h2>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4" id="timer">
+                    <div class="flex flex-col p-3 bg-blush/60 rounded-2xl border border-rose/10">
+                        <span id="days" class="font-serif text-3xl sm:text-4xl font-bold text-wine">00</span>
+                        <span class="text-xs text-wine-light font-medium mt-1">Dias</span>
+                    </div>
+                    <div class="flex flex-col p-3 bg-blush/60 rounded-2xl border border-rose/10">
+                        <span id="hours" class="font-serif text-3xl sm:text-4xl font-bold text-wine">00</span>
+                        <span class="text-xs text-wine-light font-medium mt-1">Horas</span>
+                    </div>
+                    <div class="flex flex-col p-3 bg-blush/60 rounded-2xl border border-rose/10">
+                        <span id="minutes" class="font-serif text-3xl sm:text-4xl font-bold text-wine">00</span>
+                        <span class="text-xs text-wine-light font-medium mt-1">Minutos</span>
+                    </div>
+                    <div class="flex flex-col p-3 bg-blush/60 rounded-2xl border border-rose/10">
+                        <span id="seconds" class="font-serif text-3xl sm:text-4xl font-bold text-wine">00</span>
+                        <span class="text-xs text-wine-light font-medium mt-1">Segundos</span>
+                    </div>
+                </div>
+                <p class="text-xs text-stone-500 italic mt-4" id="startDateText">Desde 23 de Agosto de 2026</p>
+            </div>
+        </header>
+
+        <!-- ================= 2. CARTAS ABRA QUANDO... ================= -->
+        <section class="scroll-mt-8">
+            <div class="text-center mb-10">
+                <h2 class="font-serif text-3xl sm:text-4xl text-wine font-bold mb-2">❤️ Cartas para a Minha Princesa</h2>
+                <p class="text-stone-600 text-sm sm:text-base">Escolha um envelope, minha princesa.</p>
+            </div>
+
+            <!-- Grade de Envelopes -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Envelope 1 -->
+                <div onclick="openLetter(1)" class="envelope-card cursor-pointer bg-white border border-rose/30 rounded-2xl p-6 shadow-md hover:shadow-xl flex flex-col items-center text-center relative overflow-hidden group">
+                    <div class="w-12 h-12 rounded-full bg-blush flex items-center justify-center text-rose-dark mb-4">
+                        <span class="text-2xl leading-none" aria-hidden="true">🌧️</span>
+                    </div>
+                    <span class="text-xs font-semibold text-rose-dark uppercase tracking-wider mb-1">Carta #1</span>
+                    <h3 class="font-serif font-bold text-wine text-lg mb-2">Quando estiver tendo um dia difícil</h3>
+                    <p class="text-xs text-stone-500">Um abraço quentinho em forma de palavras.</p>
+                </div>
+
+                <!-- Envelope 2 -->
+                <div onclick="openLetter(2)" class="envelope-card cursor-pointer bg-white border border-rose/30 rounded-2xl p-6 shadow-md hover:shadow-xl flex flex-col items-center text-center relative overflow-hidden group">
+                    <div class="w-12 h-12 rounded-full bg-blush flex items-center justify-center text-rose-dark mb-4">
+                        <span class="text-2xl leading-none" aria-hidden="true">😁</span>
+                    </div>
+                    <span class="text-xs font-semibold text-rose-dark uppercase tracking-wider mb-1">Carta #2</span>
+                    <h3 class="font-serif font-bold text-wine text-lg mb-2">Quando quiser sorrir</h3>
+                    <p class="text-xs text-stone-500">Para lembrar das nossas doideiras juntos.</p>
+                </div>
+
+                <!-- Envelope 3 -->
+                <div onclick="openLetter(3)" class="envelope-card cursor-pointer bg-white border border-rose/30 rounded-2xl p-6 shadow-md hover:shadow-xl flex flex-col items-center text-center relative overflow-hidden group">
+                    <div class="w-12 h-12 rounded-full bg-blush flex items-center justify-center text-rose-dark mb-4">
+                        <span class="text-2xl leading-none" aria-hidden="true">💌</span>
+                    </div>
+                    <span class="text-xs font-semibold text-rose-dark uppercase tracking-wider mb-1">Carta #3</span>
+                    <h3 class="font-serif font-bold text-wine text-lg mb-2">Quando estiver com saudades de mim</h3>
+                    <p class="text-xs text-stone-500">Para encurtar a distância entre nós.</p>
+                </div>
+
+                <!-- Envelope 4 -->
+                <div onclick="openLetter(4)" class="envelope-card cursor-pointer bg-white border border-rose/30 rounded-2xl p-6 shadow-md hover:shadow-xl flex flex-col items-center text-center relative overflow-hidden group">
+                    <div class="w-12 h-12 rounded-full bg-blush flex items-center justify-center text-rose-dark mb-4">
+                        <span class="text-2xl leading-none" aria-hidden="true">🌙</span>
+                    </div>
+                    <span class="text-xs font-semibold text-rose-dark uppercase tracking-wider mb-1">Carta #4</span>
+                    <h3 class="font-serif font-bold text-wine text-lg mb-2">Quando não conseguir dormir</h3>
+                    <p class="text-xs text-stone-500">Pensamentos doces para acalmar seu coração.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ================= 3. GERADOR DE MOTIVOS ================= -->
+        <section class="bg-blush/50 border border-rose/20 rounded-3xl p-6 sm:p-10 shadow-inner text-center relative overflow-hidden">
+            <div class="max-w-xl mx-auto">
+                <span class="text-xs font-bold text-rose-dark uppercase tracking-widest block mb-2">Por que eu amo você?</span>
+                <h2 class="font-serif text-3xl sm:text-4xl text-wine font-bold mb-6">Razões Pelas Quais Te Amo</h2>
+
+                <!-- Caixa com o Motivo -->
+                <div class="bg-white rounded-2xl p-8 shadow-md border border-rose/20 min-h-[160px] flex items-center justify-center mb-6 relative" id="reason-box">
+                    <p id="reason-text" class="font-serif italic text-lg sm:text-xl text-wine transition-opacity duration-300">
+                        Clique no botão abaixo para descobrir um dos infinitos motivos...
+                    </p>
+                </div>
+
+                <!-- Botão do Gerador -->
+                <button onclick="generateNewReason()" class="bg-wine hover:bg-wine-light text-white font-medium px-8 py-3.5 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2 mx-auto">
+                    <i class="fa-solid fa-wand-magic-sparkles text-gold"></i>
+                    Descubra um Motivo
+                </button>
+            </div>
+        </section>
+
+        <!-- ================= 4. CUPONS DE AMOR ================= -->
+        <section>
+            <div class="text-center mb-10">
+                <h2 class="font-serif text-3xl sm:text-4xl text-wine font-bold mb-2">Cupons de Amor Resgatáveis</h2>
+                <p class="text-stone-600 text-sm sm:text-base">Válidos a qualquer momento! Clique para resgatar o seu.</p>
+            </div>
+
+            <!-- Grade de Cupons -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                <!-- Cupom 1 -->
+                <div class="bg-blush border border-dashed border-rose-dark/40 rounded-2xl p-6 flex flex-col justify-between relative shadow-sm hover:shadow-md transition-shadow">
+                    <div class="flex items-start justify-between mb-4">
+                        <div>
+                            <span class="text-xs font-bold text-gold uppercase tracking-wider">Vale-Especial #01</span>
+                            <h3 class="font-serif text-xl font-bold text-wine mt-1">Jantar Romântico Favorito</h3>
+                        </div>
+                        <i class="fa-solid fa-utensils text-2xl text-rose-dark"></i>
+                    </div>
+                    <p class="text-sm text-stone-600 mb-6">Dá direito a um jantar completo preparado por mim ou no seu restaurante preferido!</p>
+                    <button onclick="redeemCoupon(this)" class="w-full bg-white hover:bg-rose hover:text-white border border-rose text-wine-light font-semibold py-2.5 rounded-xl transition-colors duration-300 shadow-sm">
+                        Resgatar Cupom
+                    </button>
+                </div>
+
+                <!-- Cupom 2 -->
+                <div class="bg-blush border border-dashed border-rose-dark/40 rounded-2xl p-6 flex flex-col justify-between relative shadow-sm hover:shadow-md transition-shadow">
+                    <div class="flex items-start justify-between mb-4">
+                        <div>
+                            <span class="text-xs font-bold text-gold uppercase tracking-wider">Vale-Especial #02</span>
+                            <h3 class="font-serif text-xl font-bold text-wine mt-1">Sessão de Massagem</h3>
+                        </div>
+                        <i class="fa-solid fa-spa text-2xl text-rose-dark"></i>
+                    </div>
+                    <p class="text-sm text-stone-600 mb-6">Dá direito a 30 minutos de massagem relaxante com óleos após um dia cansativo.</p>
+                    <button onclick="redeemCoupon(this)" class="w-full bg-white hover:bg-rose hover:text-white border border-rose text-wine-light font-semibold py-2.5 rounded-xl transition-colors duration-300 shadow-sm">
+                        Resgatar Cupom
+                    </button>
+                </div>
+
+                <!-- Cupom 3 -->
+                <div class="bg-blush border border-dashed border-rose-dark/40 rounded-2xl p-6 flex flex-col justify-between relative shadow-sm hover:shadow-md transition-shadow">
+                    <div class="flex items-start justify-between mb-4">
+                        <div>
+                            <span class="text-xs font-bold text-gold uppercase tracking-wider">Vale-Especial #03</span>
+                            <h3 class="font-serif text-xl font-bold text-wine mt-1">Controle do Filme & Pipoca</h3>
+                        </div>
+                        <i class="fa-solid fa-film text-2xl text-rose-dark"></i>
+                    </div>
+                    <p class="text-sm text-stone-600 mb-6">Você escolhe o filme da noite sem nenhuma reclamação (e ganha pipoca na cama!).</p>
+                    <button onclick="redeemCoupon(this)" class="w-full bg-white hover:bg-rose hover:text-white border border-rose text-wine-light font-semibold py-2.5 rounded-xl transition-colors duration-300 shadow-sm">
+                        Resgatar Cupom
+                    </button>
+                </div>
+
+                <!-- Cupom 4 -->
+                <div class="bg-blush border border-dashed border-rose-dark/40 rounded-2xl p-6 flex flex-col justify-between relative shadow-sm hover:shadow-md transition-shadow">
+                    <div class="flex items-start justify-between mb-4">
+                        <div>
+                            <span class="text-xs font-bold text-gold uppercase tracking-wider">Vale-Especial #04</span>
+                            <h3 class="font-serif text-xl font-bold text-wine mt-1">Dia de "Sim" para Tudo</h3>
+                        </div>
+                        <i class="fa-solid fa-gift text-2xl text-rose-dark"></i>
+                    </div>
+                    <p class="text-sm text-stone-600 mb-6">Um passe livre onde direi 'SIM' para todos os seus desejos e passeios por um dia.</p>
+                    <button onclick="redeemCoupon(this)" class="w-full bg-white hover:bg-rose hover:text-white border border-rose text-wine-light font-semibold py-2.5 rounded-xl transition-colors duration-300 shadow-sm">
+                        Resgatar Cupom
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ================= 5. RODAPÉ & AÇÕES ================= -->
+        <footer class="text-center py-12 border-t border-rose/20 flex flex-col items-center gap-6">
+            <p class="font-serif italic text-xl text-wine max-w-lg">
+                "Você é a minha pessoa favorita em todo o universo. Obrigado por existir e por me fazer tão feliz."
+            </p>
+
+            <div class="flex flex-wrap justify-center gap-4">
+                <!-- Botão de Chuva de Corações Extra -->
+                <button onclick="triggerLoveExplosion()" class="bg-rose hover:bg-rose-dark text-white font-semibold px-6 py-2.5 rounded-full shadow transition-all duration-300 flex items-center gap-2 text-sm">
+                    <i class="fa-solid fa-heart"></i> Lançar Amor!
+                </button>
+            </div>
+
+            <p class="text-xs text-stone-400 mt-4">Feito com todo o amor do mundo para você ❤️</p>
+        </footer>
+
+    </div>
+
+    <!-- ================= MODAL DAS CARTAS ================= -->
+    <div id="letter-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-backdrop hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-cream border border-rose/30 rounded-3xl p-6 sm:p-8 max-w-lg w-full shadow-2xl relative transform scale-95 transition-transform duration-300 overflow-y-auto max-h-[90vh]">
+            
+            <!-- Botão Fechar -->
+            <button onclick="closeLetter()" class="absolute top-4 right-4 text-stone-400 hover:text-wine p-2 transition-colors">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+
+            <!-- Conteúdo da Carta -->
+            <div id="modal-content" class="text-left">
+                <div class="w-12 h-12 rounded-full bg-blush flex items-center justify-center text-rose-dark mb-4">
+                    <i id="modal-icon" class="fa-solid fa-envelope text-xl"></i>
+                </div>
+                <h3 id="modal-title" class="font-serif text-2xl font-bold text-wine mb-4">Título da Carta</h3>
+                
+                <div id="modal-body" class="text-stone-700 text-sm sm:text-base leading-relaxed space-y-3 font-sans mb-6">
+                    <!-- O texto da carta será inserido via JS -->
+                </div>
+
+                <div class="text-right">
+                    <button onclick="closeLetter()" class="bg-wine text-white text-sm font-semibold px-6 py-2 rounded-full hover:bg-wine-light transition-colors">
+                        Fechar Carta
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+body {
+    background-color: #FFFDF9;
+    color: #3A0E17;
+    overflow-x: hidden;
+}
+
+#particles-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.envelope-card {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.envelope-card:hover {
+    transform: translateY(-8px) scale(1.02);
+}
+
+@keyframes pulse-heart {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+}
+
+.heart-beat {
+    animation: pulse-heart 1.5s infinite ease-in-out;
+}
+
+.modal-backdrop {
+    background-color: rgba(58, 14, 23, 0.6);
+    backdrop-filter: blur(4px);
+}
+
+.coupon-border {
+    background-image: radial-gradient(circle at 0 50%, transparent 12px, #FFFDF9 13px), radial-gradient(circle at 100% 50%, transparent 12px, #FFFDF9 13px);
+}

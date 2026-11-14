@@ -24,7 +24,7 @@ tailwind.config = {
     }
 };
 
-const startDate = new Date(2026, 8, 23, 18, 0, 0);
+const startDate = new Date(2026, 7, 23, 0, 0, 0);
 
 function updateTimer() {
     const now = new Date();
